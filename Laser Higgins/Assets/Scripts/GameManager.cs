@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 {
     // highscore collecting variable
     public static int TotalScore;
+    public static int TotalLifes = 3;
     // checking whether a new wave or timeslowdown of enemies is needed.
     public static bool newWaveNeeded = false;
     public static bool TimeSlowNeeded = false;
@@ -20,8 +21,10 @@ public class GameManager : MonoBehaviour
     public static float timeLeft = 5f;
     // static variabe to adjust the timescale for all other objects
     public static float timeScaleAdjuster = 1f;
+    public static float timesinceload;
     public static float normalTime;
     private bool normaltimecheck = true;
+    [SerializeField] private ActualHealthBar AccHealth;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timesinceload = Time.timeSinceLevelLoad;
+        AccHealth.SetSize((float)TotalLifes / 3);
         if (normaltimecheck)
         {
             normaltimecheck = false;
@@ -65,6 +70,10 @@ public class GameManager : MonoBehaviour
         if (newWaveNeeded)
         {
             newWaveNeeded = false;
+        }
+        if (TotalLifes == 0)
+        {
+            // die
         }
     }
 }

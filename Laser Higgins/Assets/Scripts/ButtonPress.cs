@@ -18,5 +18,6 @@ public class ButtonPress : MonoBehaviour
     public void OnPress()
     {
         GameManager.TimeSlowNeeded = true;
+        GameManager.TotalLifes--;
     }
 }
