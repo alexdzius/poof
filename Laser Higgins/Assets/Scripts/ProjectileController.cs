@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileControler : MonoBehaviour
+public class ProjectileController : MonoBehaviour
 {
+
+    public ProjectileController(){
+        
+    }
     // Start is called before the first frame update
     void Start()
     {
