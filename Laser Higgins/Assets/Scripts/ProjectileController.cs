@@ -27,15 +27,21 @@ public class ProjectileController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if(type == Type.Player){
+    if (type == Type.Player)
+    {
       transform.position += (Vector3)new Vector2(0, speed * Time.deltaTime);
     }
-    if(((Vector2)transform.position).magnitude > outOfBounds){
+    // wavy
+
+    if (((Vector2)transform.position).magnitude > outOfBounds)
+    {
       Destroy(gameObject);
     }
   }
 
-  void OnCollisionEnter2D(Collision2D collision){
-    
+  // so other things can destroy this
+  public void Destroy()
+  {
+    Destroy(gameObject);
   }
 }
