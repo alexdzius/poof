@@ -8,6 +8,7 @@ public class WaveController : MonoBehaviour
     public float powertimer = 33;
     private int waves = 2;
     [SerializeField] public GameObject[] enemies;
+    [SerializeField] public GameObject[] powerups;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,8 @@ public class WaveController : MonoBehaviour
         // if powerup needed
         if (GameManager.newPupNeeded)
         {
-
+            GameManager.newPupNeeded = false;
+            Instantiate(powerups[Random.Range(0, powerups.Length - 1)], new Vector3((float)Random.Range(-8, 8), 8f), Quaternion.identity);
         }
     }
 }

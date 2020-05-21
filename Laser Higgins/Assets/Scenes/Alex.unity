@@ -502,9 +502,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 220946232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c16640e977c962488f26e6a1a7784a1, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c7521f456822b9498e3344321567140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  fireRate: 4
+  playerBullet: {fileID: 2702549907670231419, guid: 2580d90394266e24693cb5dd9d41f829,
+    type: 3}
 --- !u!1 &246034946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,10 +1267,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
+  powertimer: 33
   enemies:
   - {fileID: 8216801789611460669, guid: 7b6b011668a13434e9adecd6604a8633, type: 3}
   - {fileID: 2702549907670231419, guid: 2580d90394266e24693cb5dd9d41f829, type: 3}
   - {fileID: 7479592703161065691, guid: b7e386ca1e5a8c7488d1dbdb6ef30846, type: 3}
+  powerups: []
 --- !u!4 &1755425268
 Transform:
   m_ObjectHideFlags: 0
