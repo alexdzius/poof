@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
   public float speed = 5f;
   // Times fired per second
   public float fireRate = 4f;
-  public float timeSinceLastFire = 0f;
+  private float timeSinceLastFire = 0f;
+  public GameObject playerBullet;
+
   // Start is called before the first frame update
   void Start()
   {
@@ -24,13 +26,12 @@ public class PlayerController : MonoBehaviour
 
     // shoot
     timeSinceLastFire += Time.deltaTime;
-    if (Input.GetButtonDown("Fire1"))
+    if (Input.GetKey("space"))
     {
       if (timeSinceLastFire > 1 / fireRate)
       {
-        timeSinceLastFire -= 1 / fireRate;
         // makes sure it doesn't fire more than once quickly
-        timeSinceLastFire = Mathf.Max(timeSinceLastFire, 1 / fireRate);
+        timeSinceLastFire %= 1 / fireRate;
         Fire();
       }
     }
@@ -43,6 +44,9 @@ public class PlayerController : MonoBehaviour
   // fire a plasma something
   void Fire()
   {
-    ProjectileController bullet = new ProjectileController();
+    GameObject bullet = Instantiate(playerBullet);
+    bullet.GetComponent<ProjectileController>().type = ProjectileController.Type.Player;
+    // teleport bullet to player
+    bullet.transform.position = transform.position;
   }
 }
