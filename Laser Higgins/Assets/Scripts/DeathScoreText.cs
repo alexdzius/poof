@@ -12,8 +12,11 @@ public class DeathScoreText : MonoBehaviour
         // highscore
         endscore[0].text = "Final Score: " + GameManager.TotalScore;
         // time passed since start \ TODO STILL FIX THIS AND CHECK IT
-        endscore[1].text = "Total Time: " + GameManager.timesinceload;
+        endscore[1].text = "Total Time: " + (int)GameManager.timesinceload + " seconds";
         // reset values
+        GameManager.TotalScore = 0;
+        GameManager.TotalLifes = 3;
+        GameManager.timeLeft = 5f;
     }
 
     // Update is called once per frame

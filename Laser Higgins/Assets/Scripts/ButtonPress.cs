@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ButtonPress : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -19,5 +19,9 @@ public class ButtonPress : MonoBehaviour
     {
         GameManager.TimeSlowNeeded = true;
         GameManager.TotalLifes--;
+    }
+    public void OnPress2()
+    {
+        SceneManager.LoadScene("MainScreen");
     }
 }

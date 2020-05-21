@@ -7,7 +7,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // highscore collecting variable
@@ -15,9 +15,9 @@ public class GameManager : MonoBehaviour
     public static int TotalLifes = 3;
     // checking whether a new wave or timeslowdown of enemies is needed.
     public static bool newWaveNeeded = false;
+    public static bool newPupNeeded = false;
     public static bool TimeSlowNeeded = false;
     public static bool TheTimer = false;
-    public static bool TheTimerOver = false;
     public static float timeLeft = 5f;
     // static variabe to adjust the timescale for all other objects
     public static float timeScaleAdjuster = 1f;
@@ -42,22 +42,39 @@ public class GameManager : MonoBehaviour
             // destroy the multiple
             Destroy(gameObject);
         }
-        normalTime = Time.deltaTime;  
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (AccHealth == null)
+        {
+            AccHealth = FindObjectOfType<ActualHealthBar>();
+        } 
+        else
+        {
+            AccHealth.SetSize((float)TotalLifes / 3);
+        }
         timesinceload = Time.timeSinceLevelLoad;
-        AccHealth.SetSize((float)TotalLifes / 3);
+
+        if (Input.GetKey("e"))
+        {
+            TimeSlowNeeded = true;
+            print("e");
+        }
+        else
+        {
+            TimeSlowNeeded = false;
+            TheTimer = false;
+            timeScaleAdjuster = 1f;
+        }
+
+
+
         if (normaltimecheck)
         {
             normaltimecheck = false;
             normalTime = Time.deltaTime;
-        }
-        if (TheTimerOver)
-        {
-            TheTimerOver = false;
         }
         // If button is pressed for time slowdown
         if (TimeSlowNeeded)
@@ -71,9 +88,10 @@ public class GameManager : MonoBehaviour
         {
             newWaveNeeded = false;
         }
+        // if death
         if (TotalLifes == 0)
         {
-            // die
+            SceneManager.LoadScene("DeathScreen");
         }
     }
 }
