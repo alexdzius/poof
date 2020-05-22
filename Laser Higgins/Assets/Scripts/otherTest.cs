@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*
+TEST CODE - DO NOT USE IN FINAL PRODUCT
+Desc: code to test whether movement works as intended, and its impact with the "not slowed down time"
+*/
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
