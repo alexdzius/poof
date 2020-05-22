@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
   public float fireRate = 4f;
   private float timeSinceLastFire = 0f;
   public GameObject playerBullet;
+  public GameObject theBlock;
   private float timer = 5;
   // Start is called before the first frame update
   void Start()
@@ -76,6 +77,12 @@ public class PlayerController : MonoBehaviour
         timer = 5;
         // reset fire rate
         fireRate = 4f;
+    }
+    if(collision.gameObject.tag == "BlockPUP"){
+      // destrouy colliding object
+      Destroy(collision.gameObject);
+      // spawn block
+       Instantiate(theBlock, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
     }
 
 
