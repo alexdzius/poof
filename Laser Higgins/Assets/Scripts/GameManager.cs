@@ -57,9 +57,11 @@ public class GameManager : MonoBehaviour
         }
         timesinceload = Time.timeSinceLevelLoad;
 
-        if (Input.GetKey("e"))
+        if (Input.GetKey("e") && timeLeft >= 0)
         {
             TimeSlowNeeded = true;
+            timeScaleAdjuster = 0.25f;
+            TheTimer = true;
             print("e");
         }
         else
@@ -67,6 +69,7 @@ public class GameManager : MonoBehaviour
             TimeSlowNeeded = false;
             TheTimer = false;
             timeScaleAdjuster = 1f;
+            print("f");
         }
 
 
@@ -75,13 +78,6 @@ public class GameManager : MonoBehaviour
         {
             normaltimecheck = false;
             normalTime = Time.deltaTime;
-        }
-        // If button is pressed for time slowdown
-        if (TimeSlowNeeded)
-        {
-            TimeSlowNeeded = false;
-            timeScaleAdjuster = 0.25f;
-            TheTimer = true;
         }
         // call on waves
         if (newWaveNeeded)

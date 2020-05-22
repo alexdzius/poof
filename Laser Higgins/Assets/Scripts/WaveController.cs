@@ -32,21 +32,21 @@ public class WaveController : MonoBehaviour
             GameManager.newWaveNeeded = false;
             for (int i = 0; i < waves; i++)
             {
-                Instantiate(enemies[Random.Range(0, enemies.Length - 1)], new Vector3((float)Random.Range(-8, 8), 8f), Quaternion.identity);  
+                Instantiate(enemies[Random.Range(0, enemies.Length - 1)], new Vector3((float)Random.Range(-3, 3), 8f), Quaternion.identity);  
             }
         }
         // powerup time spawning
-        timer -= Time.deltaTime;
-        if ((int)timer < 0)
+        powertimer -= Time.deltaTime;
+        if ((int)powertimer < 0)
         {
             GameManager.newPupNeeded = true;
-            timer = 33;
+            powertimer = 33;
         }
         // if powerup needed
         if (GameManager.newPupNeeded)
         {
             GameManager.newPupNeeded = false;
-            Instantiate(powerups[Random.Range(0, powerups.Length - 1)], new Vector3((float)Random.Range(-8, 8), 8f), Quaternion.identity);
+            Instantiate(powerups[Random.Range(0, powerups.Length - 1)], new Vector3((float)Random.Range(-3, 3), 8f), Quaternion.identity);
         }
     }
 }

@@ -24,4 +24,8 @@ public class ButtonPress : MonoBehaviour
     {
         SceneManager.LoadScene("MainScreen");
     }
+    public void OnPress3()
+    {
+        SceneManager.LoadScene("StartScreen");
+    }
 }

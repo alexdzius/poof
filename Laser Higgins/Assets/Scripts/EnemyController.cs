@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour
       if (controller.type == ProjectileController.Type.Player)
       {
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
+        GameManager.TotalScore++;
         controller.Destroy();
         Destroy(gameObject);
       }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5552619485936377398}
   - component: {fileID: 8257537979363257208}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   fireRate: 4
-  projectiles: []
+  playerBullet: {fileID: 3563073183249274802, guid: 3b89c44455d191743a68718ad063daac,
+    type: 3}
 --- !u!50 &5552619485936377398
 Rigidbody2D:
   serializedVersion: 4
@@ -109,7 +110,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 1967816887434772103}
   m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0

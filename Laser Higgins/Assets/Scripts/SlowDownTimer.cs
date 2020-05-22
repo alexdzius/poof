@@ -21,8 +21,9 @@ public class SlowDownTimer : MonoBehaviour
         }
         if (GameManager.TheTimer)
         {
-            GameManager.timeLeft -= Time.deltaTime;
+            GameManager.timeLeft -= Time.deltaTime*6;
             healthbar.SetSize(GameManager.timeLeft / 5);
+            print(Time.timeScale);
             if (GameManager.timeLeft < 0)
             {
                 GameManager.timeScaleAdjuster = 1f;

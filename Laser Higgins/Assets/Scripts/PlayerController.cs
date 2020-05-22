@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-  }
+        Time.timeScale = GameManager.timeScaleAdjuster;
+    }
 
   // Update is called once per frame
   void Update()
@@ -23,9 +24,9 @@ public class PlayerController : MonoBehaviour
     float xMovement = Input.GetAxisRaw("Horizontal");
     Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
     transform.position += (Vector3)move;
-
-    // shoot
-    timeSinceLastFire += Time.deltaTime;
+        Time.timeScale = GameManager.timeScaleAdjuster;
+        // shoot
+        timeSinceLastFire += Time.deltaTime;
     if (Input.GetKey("space"))
     {
       if (timeSinceLastFire > 1 / fireRate)
