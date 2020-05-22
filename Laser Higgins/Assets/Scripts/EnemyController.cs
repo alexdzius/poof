@@ -5,31 +5,66 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
   public float distance;
+
+  public float speed = 3f;
+
+  public enum Type
+  {
+    Chaser,
+    Pacer
+
+  }
+
+  float timeSinceTurn;
+  float timeToNextTurn;
+  public bool positive = true;
+
+  public Type name;
+
   [SerializeField] public GameObject player;
   // Start is called before the first frame update
   void Start()
   {
-
+    Type[] types = (Type[])System.Enum.GetValues(typeof(Type));
+    name = types[(int)Random.Range(0, types.Length)];
+    print(name);
+    timeToNextTurn = Random.Range(0.5f, 3f);
   }
 
   // Update is called once per frame
   void Update()
   {
-    // randomized movement
     distance = Vector3.Distance(transform.position, player.transform.position);
-    // print("Distance to other: " + distance);
-    if (transform.position.y >= 3 || player.transform.position.y > 2.5f)
+    switch (name)
     {
-      if (distance > 2)
-      {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, .01f);
-      }
-      else
-      {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(2, 2, 0), .01f);
-      }
-    }
+      case Type.Chaser:
+        // randomized movement
+        if (distance < 4 && player.transform.position.y > 0)
+        {
+          transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1f * speed * Time.deltaTime);
+        }
+        else
+        {
+          transform.position = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(Random.Range(-1f, 1f), 4.5f, 0), 1f * speed * Time.deltaTime);
+        }
+        break;
+      case Type.Pacer:
+        // if within bounds
+        if (Mathf.Abs(transform.position.x) > 2.5f)
+        {
+          positive = !positive;
+        }
+        transform.position += new Vector3(positive ? 1 : -1, 0, 0) * speed * Time.deltaTime;
 
+        break;
+    }
+    timeSinceTurn += Time.deltaTime;
+    if (timeSinceTurn > timeToNextTurn)
+    {
+      positive = !positive;
+      timeSinceTurn = 0;
+      timeToNextTurn = Random.Range(0.5f, 3f);
+    }
     // randomize shooting  
   }
 
