@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
   public float fireRate = 4f;
   private float timeSinceLastFire = 0f;
   public GameObject playerBullet;
-
+  private float timer = 5;
   // Start is called before the first frame update
   void Start()
   {
@@ -49,6 +49,36 @@ public class PlayerController : MonoBehaviour
         controller.Destroy();
       }
     }
+    // check loop to check whether the object collided is certain powerup
+
+    // if you have hit the health powerup
+    if(collision.gameObject.tag == "HealthPUP")
+    {
+      // if you have collided and theres less than 3 lifes
+      if(GameManager.TotalLifes < 3){
+        // add a life
+        GameManager.TotalLifes++;
+      }
+      // destroy the object afterwsrds regardless
+      Destroy(collision.gameObject);
+    }
+    // if you have hit the firerate powerup
+    if(collision.gameObject.tag == "FirePUP"){
+        // destroy the collided object
+        Destroy(collision.gameObject);
+        // set the firerate to 6, increasing by 50%
+        fireRate = 6f;
+        // set a temporary delay timer for 5s
+        while (timer > 0){
+          timer -= Time.deltaTime;
+        }
+        // set time back
+        timer = 5;
+        // reset fire rate
+        fireRate = 4f;
+    }
+
+
   }
   // fire a plasma something
   void Fire()
