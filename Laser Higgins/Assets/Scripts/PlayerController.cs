@@ -93,7 +93,21 @@ public class PlayerController : MonoBehaviour
             WaveController.wavetimer += 11f;
             WaveController.powertimer -= 11f;
         }
-
+    if(collision.gameObject.tag == "DeathPUP")
+        {
+            // destroy object
+            Destroy(collision.gameObject);
+            // do some funky wunky
+            GameManager.TotalLifes--;
+            WaveController.wavetimer -= 5f;
+        }
+    if(collision.gameObject.tag == "Enemy")
+        {
+            // delete enemy
+            Destroy(collision.gameObject);
+            // remove life
+            GameManager.TotalLifes--;
+        }
   }
   // fire a plasma something
   void Fire()

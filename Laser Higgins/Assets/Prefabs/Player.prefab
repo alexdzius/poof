@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1967816887434772103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.05, y: -2.99, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,6 +100,8 @@ MonoBehaviour:
   fireRate: 4
   playerBullet: {fileID: 3563073183249274802, guid: 3b89c44455d191743a68718ad063daac,
     type: 3}
+  theBlock: {fileID: 8509886123711606815, guid: 235bd537663b0440299f00359c8d50c4,
+    type: 3}
 --- !u!50 &5552619485936377398
 Rigidbody2D:
   serializedVersion: 4
@@ -138,12 +140,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0

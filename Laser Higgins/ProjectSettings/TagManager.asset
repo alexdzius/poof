@@ -8,6 +8,8 @@ TagManager:
   - FirePUP
   - BlockPUP
   - TimePUP
+  - DeathPUP
+  - Enemy
   layers:
   - Default
   - TransparentFX
