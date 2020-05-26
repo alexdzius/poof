@@ -219,6 +219,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3563073183249274802, guid: 3b89c44455d191743a68718ad063daac,
         type: 3}
+    - target: {fileID: 4968780653677388678, guid: 969e3114bf9238a4699c8d22a509478e,
+        type: 3}
+      propertyPath: name
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5497126786278660902, guid: 969e3114bf9238a4699c8d22a509478e,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -389,8 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc9996c9683d8243b83681700a17d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 11
-  powertimer: 33
   enemies: []
   powerups:
   - {fileID: 6608073834192204980, guid: 8ddcb7572fa2a4a4898d5cf7c34c5614, type: 3}
