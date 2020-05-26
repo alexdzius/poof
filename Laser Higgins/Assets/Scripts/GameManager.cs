@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
             // possibly adjust based on what type of wave is required.
         }
         // if the player has lost all thheir lives
-        if (TotalLifes == 0)
+        if (TotalLifes <= 0)
         {
             // load the death screen
             SceneManager.LoadScene("DeathScreen");
