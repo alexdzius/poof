@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class WaveController : MonoBehaviour
 {
-    public float timer = 11;
-    public float powertimer = 33;
+    public static float wavetimer = 11;
+    public static float powertimer = 33;
     private int waves = 2;
     [SerializeField] public GameObject[] enemies;
     [SerializeField] public GameObject[] powerups;
@@ -19,11 +19,11 @@ public class WaveController : MonoBehaviour
     void Update()
     {
         // enemy wave spawning
-        timer -= Time.deltaTime;
-        if((int)timer < 0)
+        wavetimer -= Time.deltaTime;
+        if((int)wavetimer < 0)
         {
             GameManager.newWaveNeeded = true;
-            timer = 11;
+            wavetimer = 11;
             waves++;
         }
         // if wave needed

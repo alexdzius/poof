@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     // movement stuff
     float yMovement = Input.GetAxisRaw("Vertical");
     float xMovement = Input.GetAxisRaw("Horizontal");
-    Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
-    transform.position += (Vector3)move;
+        Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
+        transform.position += (Vector3)move;
         Time.timeScale = GameManager.timeScaleAdjuster;
         // shoot
         timeSinceLastFire += Time.deltaTime;
@@ -82,9 +82,17 @@ public class PlayerController : MonoBehaviour
       // destrouy colliding object
       Destroy(collision.gameObject);
       // spawn block
-       Instantiate(theBlock, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
+      Instantiate(theBlock, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
     }
-
+    if(collision.gameObject.tag == "TimePUP")
+        {
+            // destroy colliding object
+            Destroy(collision.gameObject);
+            // set the timers to be beneficial
+            GameManager.timeLeft = 5f;
+            WaveController.wavetimer += 11f;
+            WaveController.powertimer -= 11f;
+        }
 
   }
   // fire a plasma something
