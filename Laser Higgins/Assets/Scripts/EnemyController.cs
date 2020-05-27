@@ -21,7 +21,10 @@ public class EnemyController : MonoBehaviour
 
   float timeSinceTurn;
   float timeToNextTurn;
-  public bool positive = true;
+  private bool positive = true;
+  private bool vertical = true;
+  private float top;
+  private float bottom;
 
   public Type name;
 
@@ -36,6 +39,13 @@ public class EnemyController : MonoBehaviour
     name = types[(int)Random.Range(0, types.Length)];
     print(name);
     timeToNextTurn = Random.Range(0.5f, 3f);
+    top = Random.Range(2, 4);
+    bottom = 4;
+    // make sure bottom y bound is lower
+    while (bottom > top)
+    {
+      bottom = Random.Range(0, 4);
+    }
   }
 
   // Update is called once per frame
@@ -62,16 +72,21 @@ public class EnemyController : MonoBehaviour
         {
           transform.position = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(Random.Range(-1f, 1f), 4.5f, 0), 1f * speed * Time.deltaTime);
         }
-        if(fire) Fire();
+        if (fire) Fire();
         break;
       case Type.Pacer:
+        // horizontal movement
         // if within bounds
         if (Mathf.Abs(transform.position.x) > 2.5f)
         {
           positive = !positive;
         }
+        if (transform.position.y > top) vertical = false;
+        if (transform.position.y < bottom) vertical = true;
         transform.position += new Vector3(positive ? 1 : -1, 0, 0) * speed * Time.deltaTime;
-        if(fire) Fire(true);
+        // vertical movement
+        transform.position += new Vector3(0, vertical ? 1 : -1, 0) * speed * Time.deltaTime;
+        if (fire) Fire(true);
         break;
     }
     timeSinceTurn += Time.deltaTime;
