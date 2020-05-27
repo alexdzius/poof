@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
         // if the player has lost all thheir lives
         if (TotalLifes <= 0)
         {
+            SoundEffectHandler.deathed = true;
             // load the death screen
             SceneManager.LoadScene("DeathScreen");
         }

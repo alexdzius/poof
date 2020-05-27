@@ -26,6 +26,7 @@ public class ButtonPress : MonoBehaviour
     {
         GameManager.TimeSlowNeeded = true;
         GameManager.TotalLifes--;
+        SoundEffectHandler.damaged = true;
     }
     // option for start screen and death screen button, allows to return to core gameplay
     public void OnPress2()

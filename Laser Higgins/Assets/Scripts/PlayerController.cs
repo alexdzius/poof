@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
       if(controller.type == ProjectileController.Type.Enemy){
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
         GameManager.TotalLifes--;
+                SoundEffectHandler.damaged = true;
         controller.Destroy();
       }
     }
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             // do some funky wunky
             GameManager.TotalLifes--;
+            SoundEffectHandler.damaged = true;
             WaveController.wavetimer -= 5f;
         }
     if(collision.gameObject.tag == "Enemy")
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             // remove life
             GameManager.TotalLifes--;
+            SoundEffectHandler.damaged = true;
         }
     if(collision.gameObject.tag == "FreeTime")
         {
@@ -121,5 +124,6 @@ public class PlayerController : MonoBehaviour
     bullet.GetComponent<ProjectileController>().type = ProjectileController.Type.Player;
     // teleport bullet to player
     bullet.transform.position = transform.position;
+        SoundEffectHandler.shooted = true;
   }
 }
