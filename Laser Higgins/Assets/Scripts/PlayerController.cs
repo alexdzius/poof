@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.iOS;
 public class PlayerController : MonoBehaviour
 {
   public float speed = 5f;
@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
   private float timeSinceLastFire = 0f;
   public GameObject playerBullet;
   public GameObject theBlock;
+  public Joystick joystick;
   public float timer = 5;
   // Start is called before the first frame update
   void Start()
@@ -23,6 +24,11 @@ public class PlayerController : MonoBehaviour
     // movement stuff
     float yMovement = Input.GetAxisRaw("Vertical");
     float xMovement = Input.GetAxisRaw("Horizontal");
+        if(xMovement == 0 || yMovement == 0)
+        {
+            yMovement = joystick.Vertical;
+            xMovement = joystick.Horizontal;
+        }
         Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
         transform.position += (Vector3)move;
         Time.timeScale = GameManager.timeScaleAdjuster;
@@ -37,6 +43,44 @@ public class PlayerController : MonoBehaviour
         Fire();
       }
     }
+    if(Input.touchCount > 0)
+        {
+            print(Input.touchCount);
+            Touch touch = Input.GetTouch(0);
+            if(touch.phase == TouchPhase.Moved)
+            {
+                if (timeSinceLastFire > 1 / fireRate)
+                {
+                    // makes sure it doesn't fire more than once quickly
+                    timeSinceLastFire %= 1 / fireRate;
+                    Fire();
+                }
+            }
+            if(Input.touchCount == 2)
+            {
+                touch = Input.GetTouch(1);
+                if(touch.phase == TouchPhase.Began && GameManager.timeLeft > 0)
+                {
+                    // set the timeslowneeded to true to start the decrementation process of time amount
+                    GameManager.TimeSlowNeeded = true;
+                    // slow down the level's sped
+                    GameManager.timeScaleAdjuster = 0.25f;
+                    // set the fact that the timer is occuring as true
+                    GameManager.TheTimer = true;
+                }
+                if(touch.phase == TouchPhase.Ended || GameManager.timeLeft < 0)
+                {
+                    // set the bools to be confirmed that the timer is ove
+                    GameManager.TimeSlowNeeded = false;
+                    GameManager.TheTimer = false;
+                    // set the time of the level back to ususal levels.
+                    GameManager.timeScaleAdjuster = 1f;
+                }
+            }
+        }
+
+
+
   }
 
   void OnCollisionEnter2D(Collision2D collision)

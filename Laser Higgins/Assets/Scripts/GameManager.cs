@@ -68,25 +68,29 @@ public class GameManager : MonoBehaviour
         // set the time since load variable to the actual amount of time since load, to constantly calculate the amount of seconds that have passed since begin.
         timesinceload = Time.timeSinceLevelLoad;
 
-        // if the slowdown button is held down, and there is slowdown time leftover
-        if (Input.GetKey("e") && timeLeft >= 0)
-        {
-            // set the timeslowneeded to true to start the decrementation process of time amount
-            TimeSlowNeeded = true;
-            // slow down the level's sped
-            timeScaleAdjuster = 0.25f;
-            // set the fact that the timer is occuring as true
-            TheTimer = true;
-        }
-        // if the button is not pressed anymore or time runs out
-        else
-        {
-            // set the bools to be confirmed that the timer is ove
-            TimeSlowNeeded = false;
-            TheTimer = false;
-            // set the time of the level back to ususal levels.
-            timeScaleAdjuster = 1f;
-        }
+        // overall check if object is IOS or Desktop - these controls for desktop
+        #if UNITY_EDITOR
+        print("h");
+            // if the slowdown button is held down, and there is slowdown time leftover
+            if (Input.GetKey("e") && timeLeft >= 0)
+            {
+                // set the timeslowneeded to true to start the decrementation process of time amount
+                TimeSlowNeeded = true;
+                // slow down the level's sped
+                timeScaleAdjuster = 0.25f;
+                // set the fact that the timer is occuring as true
+                TheTimer = true;
+            }
+            // if the button is not pressed anymore or time runs out
+            else
+            {
+                // set the bools to be confirmed that the timer is ove
+                TimeSlowNeeded = false;
+                TheTimer = false;
+                // set the time of the level back to ususal levels.
+                timeScaleAdjuster = 1f;
+            }
+        #endif
         // CURRENTLY UNUSED: check for normaltime, to ensure that certain objects retain normal speed.
         if (normaltimecheck)
         {
