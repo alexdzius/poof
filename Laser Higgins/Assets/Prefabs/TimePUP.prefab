@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4498606473950686806}
   - component: {fileID: -77036402051892820}
   - component: {fileID: -574194415989073444}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: TimePUP
   m_TagString: TimePUP
   m_Icon: {fileID: 0}

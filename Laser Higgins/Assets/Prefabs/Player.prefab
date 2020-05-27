@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8257537979363257208}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
     type: 3}
   theBlock: {fileID: 8509886123711606815, guid: 235bd537663b0440299f00359c8d50c4,
     type: 3}
+  timer: 5
 --- !u!50 &5552619485936377398
 Rigidbody2D:
   serializedVersion: 4

@@ -10,6 +10,7 @@ TagManager:
   - TimePUP
   - DeathPUP
   - Enemy
+  - FreeTime
   layers:
   - Default
   - TransparentFX
