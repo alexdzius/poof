@@ -11,8 +11,8 @@ public class EnemyController : MonoBehaviour
   public enum Type
   {
     Chaser,
-    Pacer
-
+    Pacer,
+    Kamikaze
   }
   // Times fired per second
   public float fireRate = 0.7f;
@@ -87,6 +87,9 @@ public class EnemyController : MonoBehaviour
         // vertical movement
         transform.position += new Vector3(0, vertical ? 1 : -1, 0) * speed * Time.deltaTime;
         if (fire) Fire(true);
+        break;
+      case Type.Kamikaze:
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1.5f * speed * Time.deltaTime);
         break;
     }
     timeSinceTurn += Time.deltaTime;
