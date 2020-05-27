@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SoundEffectHandler : MonoBehaviour
 {
+    // audio clip holders
     public AudioClip shootsound;
     public AudioClip damagesound;
     public AudioClip deathsound;
+    // static bools that control when each sound effect is intended to play
     public static bool shooted = false;
     public static bool damaged = false;
     public static bool deathed = false;
@@ -19,13 +21,18 @@ public class SoundEffectHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if player has shot
         if (shooted)
         {
+            // set to false
             shooted = false;
+            // get shooting sound and prevent looping
             GetComponent<AudioSource>().clip = shootsound;
             GetComponent<AudioSource>().loop = false;
+            // play sound
             GetComponent<AudioSource>().Play();
         }
+        // if player was damaged
         if (damaged)
         {
             damaged = false;
