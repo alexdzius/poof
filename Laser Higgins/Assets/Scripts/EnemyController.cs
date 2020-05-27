@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    player = GameManager.player;
     Type[] types = (Type[])System.Enum.GetValues(typeof(Type));
     name = types[(int)Random.Range(0, types.Length)];
     print(name);

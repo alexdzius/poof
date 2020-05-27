@@ -27,11 +27,14 @@ public class GameManager : MonoBehaviour
     // extrra float and bool fo future refence if needed to not slowdown certain objeccts -- currently not used
     public static float normalTime;
     private bool normaltimecheck = true;
+    public static GameObject player;
     // variable to hold the health bar and operate the script necessary for it
     [SerializeField] private ActualHealthBar AccHealth;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        print(player);
         // find all objects of type gamemanager, to allow it to persist throughout changing scenes
         GameManager[] anObject = FindObjectsOfType<GameManager>();
         // if there is only one game manager
