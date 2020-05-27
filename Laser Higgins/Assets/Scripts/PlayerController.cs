@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
   private float timeSinceLastFire = 0f;
   public GameObject playerBullet;
   public GameObject theBlock;
-  private float timer = 5;
+  public float timer = 5;
   // Start is called before the first frame update
   void Start()
   {
@@ -93,7 +93,26 @@ public class PlayerController : MonoBehaviour
             WaveController.wavetimer += 11f;
             WaveController.powertimer -= 11f;
         }
-
+    if(collision.gameObject.tag == "DeathPUP")
+        {
+            // destroy object
+            Destroy(collision.gameObject);
+            // do some funky wunky
+            GameManager.TotalLifes--;
+            WaveController.wavetimer -= 5f;
+        }
+    if(collision.gameObject.tag == "Enemy")
+        {
+            // delete enemy
+            Destroy(collision.gameObject);
+            // remove life
+            GameManager.TotalLifes--;
+        }
+    if(collision.gameObject.tag == "FreeTime")
+        {
+            Destroy(collision.gameObject);
+            GameManager.timeLeft = 5f;
+        }
   }
   // fire a plasma something
   void Fire()

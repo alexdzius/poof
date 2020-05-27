@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6512465037955090236
+--- !u!1 &677826165995665684
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,24 +8,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4854791718821192761}
-  - component: {fileID: 8000096547028101271}
-  - component: {fileID: 8744138840087248853}
-  - component: {fileID: 5658403824584398701}
+  - component: {fileID: 3565875621768687821}
+  - component: {fileID: 9035500116728526746}
+  - component: {fileID: 3882295309228385247}
+  - component: {fileID: -5293852180224406669}
   m_Layer: 1
-  m_Name: BlockPUP
-  m_TagString: BlockPUP
+  m_Name: DeathPUP
+  m_TagString: DeathPUP
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4854791718821192761
+--- !u!4 &3565875621768687821
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512465037955090236}
+  m_GameObject: {fileID: 677826165995665684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8000096547028101271
+--- !u!212 &9035500116728526746
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512465037955090236}
+  m_GameObject: {fileID: 677826165995665684}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3fe62f8bba1e4c41a2ad8ed603a84b1, type: 3}
-  m_Color: {r: 0.19127488, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.8956318, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -83,14 +83,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8744138840087248853
+--- !u!50 &3882295309228385247
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512465037955090236}
+  m_GameObject: {fileID: 677826165995665684}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -104,13 +104,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5658403824584398701
+--- !u!61 &-5293852180224406669
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6512465037955090236}
+  m_GameObject: {fileID: 677826165995665684}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

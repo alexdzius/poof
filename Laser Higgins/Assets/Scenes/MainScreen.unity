@@ -200,14 +200,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc9996c9683d8243b83681700a17d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 11
-  powertimer: 33
   enemies:
   - {fileID: 927081959084103130, guid: 969e3114bf9238a4699c8d22a509478e, type: 3}
   - {fileID: 927081959084103130, guid: 969e3114bf9238a4699c8d22a509478e, type: 3}
   powerups:
-  - {fileID: 7479592703161065691, guid: b7e386ca1e5a8c7488d1dbdb6ef30846, type: 3}
-  - {fileID: 7479592703161065691, guid: b7e386ca1e5a8c7488d1dbdb6ef30846, type: 3}
+  - {fileID: 6512465037955090236, guid: ac7c9fc0815b746768f985af6268ecb0, type: 3}
+  - {fileID: 677826165995665684, guid: 31bb6c8d256230649ae8ef0432495f16, type: 3}
+  - {fileID: 6608073834192204980, guid: 8ddcb7572fa2a4a4898d5cf7c34c5614, type: 3}
+  - {fileID: 7746162933707009392, guid: 190355cb8f9b34295897dd35618889d2, type: 3}
+  - {fileID: 3684333142419984858, guid: 87afe920f2302f34ca440d09a7d97f56, type: 3}
 --- !u!1 &256780604
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 91b791d618722d24ba6be653b5bc631e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -591,6 +592,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &765498211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1967816887434772103, guid: db5aed1be4b34424f88b5033612ba681,
+    type: 3}
+  m_PrefabInstance: {fileID: 2117949180}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &765498212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765498211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caa8c806f36d78c40ba2d7f45f1c6c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCamera: {fileID: 519420031}
 --- !u!1 &1111623524
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,6 +1696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130958628682226423, guid: db5aed1be4b34424f88b5033612ba681,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5aed1be4b34424f88b5033612ba681, type: 3}

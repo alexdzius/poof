@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6773376342997158759}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 0
   speed: 3
+  fireRate: 0.7
   positive: 1
   name: 0
+  enemyBullet: {fileID: 5726390550946876662, guid: de1fca492e1ea5042844121db44348df,
+    type: 3}
   player: {fileID: 1967816887434772103, guid: db5aed1be4b34424f88b5033612ba681, type: 3}
 --- !u!50 &5497126786278660902
 Rigidbody2D:
