@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class theBlock : MonoBehaviour
 {
-    public float timer = 5f;
+    // timer to delay blocks destruction
+    private float timer = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +15,29 @@ public class theBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // countdown timer
         timer -= Time.deltaTime;
+        // if timer is past 0 seconds
         if (timer <= 0) 
         {
+            // destroy block
             Destroy(gameObject);
+        }
+    }
+    // if block collides with something
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // if its not the player
+        if(collision.gameObject.tag != "Player")
+        {
+            // if it hits an enemy
+            if (collision.gameObject.tag == "Enemy")
+            {
+                // add 1 to score
+                GameManager.TotalScore++;
+            }
+            // destroy collided object regardless
+            Destroy(collision.gameObject); 
         }
     }
 }

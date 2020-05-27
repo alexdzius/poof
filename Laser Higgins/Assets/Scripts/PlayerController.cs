@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
   private float timeSinceLastFire = 0f;
   public GameObject playerBullet;
   public GameObject theBlock;
-  private float timer = 5;
+  public float timer = 5;
   // Start is called before the first frame update
   void Start()
   {
@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     // movement stuff
     float yMovement = Input.GetAxisRaw("Vertical");
     float xMovement = Input.GetAxisRaw("Horizontal");
-    Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
-    transform.position += (Vector3)move;
+        Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
+        transform.position += (Vector3)move;
         Time.timeScale = GameManager.timeScaleAdjuster;
         // shoot
         timeSinceLastFire += Time.deltaTime;
@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
       if(controller.type == ProjectileController.Type.Enemy){
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
         GameManager.TotalLifes--;
+                SoundEffectHandler.damaged = true;
         controller.Destroy();
       }
     }
@@ -82,10 +83,39 @@ public class PlayerController : MonoBehaviour
       // destrouy colliding object
       Destroy(collision.gameObject);
       // spawn block
-       Instantiate(theBlock, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
+      Instantiate(theBlock, new Vector3(transform.position.x, transform.position.y + 2, transform.position.z), Quaternion.identity);
     }
-
-
+    if(collision.gameObject.tag == "TimePUP")
+        {
+            // destroy colliding object
+            Destroy(collision.gameObject);
+            // set the timers to be beneficial
+            GameManager.timeLeft = 5f;
+            WaveController.wavetimer += 11f;
+            WaveController.powertimer -= 11f;
+        }
+    if(collision.gameObject.tag == "DeathPUP")
+        {
+            // destroy object
+            Destroy(collision.gameObject);
+            // do some funky wunky
+            GameManager.TotalLifes--;
+            SoundEffectHandler.damaged = true;
+            WaveController.wavetimer -= 5f;
+        }
+    if(collision.gameObject.tag == "Enemy")
+        {
+            // delete enemy
+            Destroy(collision.gameObject);
+            // remove life
+            GameManager.TotalLifes--;
+            SoundEffectHandler.damaged = true;
+        }
+    if(collision.gameObject.tag == "FreeTime")
+        {
+            Destroy(collision.gameObject);
+            GameManager.timeLeft = 5f;
+        }
   }
   // fire a plasma something
   void Fire()
@@ -94,5 +124,6 @@ public class PlayerController : MonoBehaviour
     bullet.GetComponent<ProjectileController>().type = ProjectileController.Type.Player;
     // teleport bullet to player
     bullet.transform.position = transform.position;
+        SoundEffectHandler.shooted = true;
   }
 }

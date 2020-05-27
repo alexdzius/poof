@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6608073834192204981}
   - component: {fileID: 6608073834192204983}
   - component: {fileID: 6608073834192204976}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: FirePUP
   m_TagString: FirePUP
   m_Icon: {fileID: 0}
@@ -98,12 +98,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6608073834192204976
 BoxCollider2D:
   m_ObjectHideFlags: 0
