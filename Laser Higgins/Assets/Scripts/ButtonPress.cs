@@ -40,4 +40,11 @@ public class ButtonPress : MonoBehaviour
         // if pressed, load scene
         SceneManager.LoadScene("StartScreen");
     }
+    // option for game closure
+    public void OnPress4()
+    {
+        // if pressed, close game
+        Application.Quit();
+        print("poop");
+    }
 }

@@ -91,11 +91,11 @@ public class GameManager : MonoBehaviour
                     timeScaleAdjuster = 1f;
                 }
         #endif
-        // CURRENTLY UNUSED: check for normaltime, to ensure that certain objects retain normal speed.
-        if (normaltimecheck)
+        // if esc is pressed then close game
+        if (Input.GetKey("escape"))
         {
-            normaltimecheck = false;
-            normalTime = Time.deltaTime;
+            Application.Quit();
+            print("poop");
         }
         // if a new wave is required, based on timer or other events
         if (newWaveNeeded)
