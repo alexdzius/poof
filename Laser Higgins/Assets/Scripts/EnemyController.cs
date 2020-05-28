@@ -12,7 +12,8 @@ public class EnemyController : MonoBehaviour
   {
     Chaser,
     Pacer,
-    Kamikaze
+    Kamikaze,
+    RandomTurn
   }
   // Times fired per second
   public float fireRate = 0.7f;
@@ -25,6 +26,7 @@ public class EnemyController : MonoBehaviour
   private bool vertical = true;
   private float top;
   private float bottom;
+  private Vector3 direction;
 
   public Type name;
 
@@ -46,18 +48,29 @@ public class EnemyController : MonoBehaviour
     {
       bottom = Random.Range(0, 4);
     }
+    // random direction
+    direction = (new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0)).normalized;
   }
 
   // Update is called once per frame
   void Update()
   {
     bool fire = false;
+    bool change = false;
     timeSinceLastFire += Time.deltaTime;
     if (timeSinceLastFire > 1 / fireRate)
     {
       // makes sure it doesn't fire more than once quickly
       timeSinceLastFire %= 1 / fireRate;
       fire = true;
+    }
+    timeSinceTurn += Time.deltaTime;
+    if (timeSinceTurn > timeToNextTurn)
+    {
+      positive = !positive;
+      change = true;
+      timeSinceTurn = 0;
+      timeToNextTurn = Random.Range(0.5f, 3f);
     }
     distance = Vector3.Distance(transform.position, player.transform.position);
     switch (name)
@@ -79,7 +92,8 @@ public class EnemyController : MonoBehaviour
         // if within bounds
         if (Mathf.Abs(transform.position.x) > 2.5f)
         {
-          positive = !positive;
+          // move to mid if out of bounds
+          transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 2, 0), speed * Time.deltaTime);
         }
         if (transform.position.y > top) vertical = false;
         if (transform.position.y < bottom) vertical = true;
@@ -91,13 +105,21 @@ public class EnemyController : MonoBehaviour
       case Type.Kamikaze:
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 1.5f * speed * Time.deltaTime);
         break;
-    }
-    timeSinceTurn += Time.deltaTime;
-    if (timeSinceTurn > timeToNextTurn)
-    {
-      positive = !positive;
-      timeSinceTurn = 0;
-      timeToNextTurn = Random.Range(0.5f, 3f);
+      case Type.RandomTurn:
+        if (change)
+        {
+          // random direction
+          direction = (new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0)).normalized;
+        }
+        if (transform.position.y > 4 || transform.position.y < 0 || Mathf.Abs(transform.position.x) > 2.5)
+        {
+          print("out of bounds randomdirection");
+          // make direction aim at middle if out of bounds
+          direction = (Vector3.MoveTowards(transform.position, new Vector3(0, 2, 0), 1) - transform.position).normalized;
+        }
+        transform.position += direction * speed * Time.deltaTime;
+        if(fire) Fire();
+        break;
     }
     // randomize shooting  
   }
