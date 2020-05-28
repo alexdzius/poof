@@ -24,11 +24,13 @@ public class PlayerController : MonoBehaviour
     // movement stuff
     float yMovement = Input.GetAxisRaw("Vertical");
     float xMovement = Input.GetAxisRaw("Horizontal");
+#if UNITY_IOS
         if(xMovement == 0 || yMovement == 0)
         {
             yMovement = joystick.Vertical;
             xMovement = joystick.Horizontal;
         }
+#endif
         Vector2 move = new Vector2(xMovement, yMovement).normalized * Time.deltaTime * speed;
         transform.position += (Vector3)move;
         Time.timeScale = GameManager.timeScaleAdjuster;
@@ -43,7 +45,8 @@ public class PlayerController : MonoBehaviour
         Fire();
       }
     }
-    if(Input.touchCount > 0)
+#if UNITY_IOS
+        if(Input.touchCount > 0)
         {
             print(Input.touchCount);
             Touch touch = Input.GetTouch(0);
@@ -78,10 +81,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+#endif
 
 
-
-  }
+    }
 
   void OnCollisionEnter2D(Collision2D collision)
   {
