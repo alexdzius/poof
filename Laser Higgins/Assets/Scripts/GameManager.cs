@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         timesinceload = Time.timeSinceLevelLoad;
 
         // overall check if object is IOS or Desktop - these controls for desktop
-        #if UNITY_EDITOR
+        #if !UNITY_IOS
                 print("h");
                 // if the slowdown button is held down, and there is slowdown time leftover
                 if (Input.GetKey("e") && timeLeft >= 0)

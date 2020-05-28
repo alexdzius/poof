@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour
   public GameObject playerBullet;
   public GameObject theBlock;
   public Joystick joystick;
+  public GameObject gameobject;
   public float timer = 5;
   // Start is called before the first frame update
   void Start()
   {
         Time.timeScale = GameManager.timeScaleAdjuster;
+#if !UNITY_IOS
+        gameobject.SetActive(false);
+#endif
     }
 
   // Update is called once per frame
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
         {
             print(Input.touchCount);
             Touch touch = Input.GetTouch(0);
-            if(touch.phase == TouchPhase.Moved)
+            if(Input.touchCount == 2)
             {
                 if (timeSinceLastFire > 1 / fireRate)
                 {
@@ -59,9 +63,9 @@ public class PlayerController : MonoBehaviour
                     Fire();
                 }
             }
-            if(Input.touchCount == 2)
+            if(Input.touchCount == 3)
             {
-                touch = Input.GetTouch(1);
+                touch = Input.GetTouch(2);
                 if(touch.phase == TouchPhase.Began && GameManager.timeLeft > 0)
                 {
                     // set the timeslowneeded to true to start the decrementation process of time amount
