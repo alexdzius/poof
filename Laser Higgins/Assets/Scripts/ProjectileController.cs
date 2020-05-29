@@ -11,11 +11,12 @@ public class ProjectileController : MonoBehaviour
   }
 
   public Type type;
-  public float speed = 5f;
+  public float speed = 7f;
   public float outOfBounds = 20f;
   public bool targetPlayer = false;
-  public Vector3 playerPos;
+  public GameObject player;
   private Vector3 direction;
+  public float boundsNearPlayer = 2.5f;
 
   public ProjectileController()
   {
@@ -24,7 +25,28 @@ public class ProjectileController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    direction = (Vector3.MoveTowards(transform.position, playerPos, 1) - transform.position).normalized;
+    // calculate direction it needs to move in linearly
+    if (targetPlayer)
+    {
+      direction = (Vector3.MoveTowards(transform.position, player.transform.position, 1) - transform.position).normalized;
+    }
+    // 1/5 chance of shooting a leading projectile
+    if (type == Type.Enemy && Random.value < 0.33f)
+    {
+      // projectile leading that doesn't work because player is too speedy
+      /*       Vector3 playerPos = player.transform.position;
+            Vector3 currentPos = transform.position;
+            Vector3 playerMove = player.GetComponent<PlayerController>().getCurrentDirection();
+            float time = Vector3.Distance(currentPos, playerPos) / speed;
+            // estimate approximate position of player to target and hit if player continues moving on current trajectory
+            playerPos += time * playerMove * player.GetComponent<PlayerController>().speed;
+            print(playerPos);
+            direction = (Vector3.MoveTowards(currentPos, playerPos, speed * Time.deltaTime) - transform.position).normalized;
+            targetPlayer = true; */
+      // target random position within 2 units of the player
+      direction = (Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(Random.Range(-boundsNearPlayer, boundsNearPlayer), Random.Range(-boundsNearPlayer, boundsNearPlayer), 0), 1) - transform.position).normalized;
+      targetPlayer = true;
+    }
   }
 
   // Update is called once per frame

@@ -149,6 +149,6 @@ public class EnemyController : MonoBehaviour
     bullet.transform.position = transform.position;
     // target player if set
     bullet.GetComponent<ProjectileController>().targetPlayer = target;
-    bullet.GetComponent<ProjectileController>().playerPos = player.transform.position;
+    bullet.GetComponent<ProjectileController>().player = player;
   }
 }
