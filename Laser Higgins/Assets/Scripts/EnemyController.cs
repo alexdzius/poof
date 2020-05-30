@@ -1,13 +1,19 @@
-﻿using System.Collections;
+﻿/*
+ * EnemyController.cs
+ * Last Edited: 5/30/20
+ * By: Marvin Chan
+ * Desc: Enemy controlling script, allowing for various behaviors and movements.
+ */
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+  // distance and speed variable for enemies to dictate movement and speed
   public float distance;
-
   public float speed = 3f;
-
+  // enum type to allow for switch statements to process each type's movement easier
   public enum Type
   {
     Chaser,

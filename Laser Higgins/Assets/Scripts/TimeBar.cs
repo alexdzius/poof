@@ -8,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBar : MonoBehaviour
+public class TimeBar : MonoBehaviour
 {
     // set transform object
     private Transform bar;

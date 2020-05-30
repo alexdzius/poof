@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * PlayerController.cs
+ * Last Edited: 5/30/20
+ * By: Marvin Chan, Alex Dzius
+ * Desc: Handler script for the player, involves movement, functions and powerup handling altogether. Works both on IOS and PC.
+ */ 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.iOS;
@@ -8,18 +14,23 @@ public class PlayerController : MonoBehaviour
   // Times fired per second
   public float fireRate = 4f;
   private float timeSinceLastFire = 0f;
+  // GameObjects to handle the bullets, block, and joystick
   public GameObject playerBullet;
   public GameObject theBlock;
   public Joystick joystick;
-  public GameObject gameobject;
+  public GameObject joystickGO;
+  // timer and vector3 direction, to allow for certain things to operate
   public float timer = 5;
   Vector3 currentDirection;
   // Start is called before the first frame update
   void Start()
   {
+    // set the time to the timescaleadjuster, which at start is 1
     Time.timeScale = GameManager.timeScaleAdjuster;
+    // if the project is running not on ios
 #if !UNITY_IOS
-    gameobject.SetActive(false);
+    // disable the joystick object
+    joystickGO.SetActive(false);
 #endif
   }
 
@@ -29,6 +40,7 @@ public class PlayerController : MonoBehaviour
     // movement stuff
     float yMovement = Input.GetAxisRaw("Vertical");
     float xMovement = Input.GetAxisRaw("Horizontal");
+    // if project is on IOS, detect movement from joystick
 #if UNITY_IOS
         if(xMovement == 0 || yMovement == 0)
         {
@@ -50,13 +62,16 @@ public class PlayerController : MonoBehaviour
         Fire();
       }
     }
+    // if program is running on ios
 #if UNITY_IOS
         if(Input.touchCount > 0)
         {
-            print(Input.touchCount);
+            // get touch struct to account for touches
             Touch touch = Input.GetTouch(0);
+            // if there is 2 touch inputs
             if(Input.touchCount == 2)
             {
+                // run the firing script and handler
                 if (timeSinceLastFire > 1 / fireRate)
                 {
                     // makes sure it doesn't fire more than once quickly
@@ -64,9 +79,12 @@ public class PlayerController : MonoBehaviour
                     Fire();
                 }
             }
+            // if there is 3 touch inputs
             if(Input.touchCount == 3)
             {
+                // set the touch struct to hold as long as at least 2 fingers are on
                 touch = Input.GetTouch(2);
+                // if touching has began, and theres time left for slowdown, then start slowdown
                 if(touch.phase == TouchPhase.Began && GameManager.timeLeft > 0)
                 {
                     // set the timeslowneeded to true to start the decrementation process of time amount
@@ -76,6 +94,7 @@ public class PlayerController : MonoBehaviour
                     // set the fact that the timer is occuring as true
                     GameManager.TheTimer = true;
                 }
+                // if touching ends or time runs out, end slowdown
                 if(touch.phase == TouchPhase.Ended || GameManager.timeLeft < 0)
                 {
                     // set the bools to be confirmed that the timer is ove
@@ -87,8 +106,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 #endif
-
-
   }
 
   void OnCollisionEnter2D(Collision2D collision)
@@ -104,8 +121,6 @@ public class PlayerController : MonoBehaviour
         controller.Destroy();
       }
     }
-    // check loop to check whether the object collided is certain powerup
-
     // if you have hit the health powerup
     if (collision.gameObject.tag == "HealthPUP")
     {
@@ -155,7 +170,7 @@ public class PlayerController : MonoBehaviour
     {
       // destroy object
       Destroy(collision.gameObject);
-      // do some funky wunky
+      // decrease lives, decrease wave time and put sound on damage
       GameManager.TotalLifes--;
       SoundEffectHandler.damaged = true;
       WaveController.wavetimer -= 5f;
@@ -170,6 +185,7 @@ public class PlayerController : MonoBehaviour
     }
     if (collision.gameObject.tag == "FreeTime")
     {
+      // delete the collided object, and add free time
       Destroy(collision.gameObject);
       GameManager.timeLeft = 5f;
     }

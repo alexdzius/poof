@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * SoundEffectHandler.cs
+ * Last Edited: 5/30/20
+ * By: Alex Dzius
+ * Desc: sound effect handler, to allow for sounds to be played at correct times
+ */ 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,11 +18,6 @@ public class SoundEffectHandler : MonoBehaviour
     public static bool shooted = false;
     public static bool damaged = false;
     public static bool deathed = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -24,25 +25,29 @@ public class SoundEffectHandler : MonoBehaviour
         // if player has shot
         if (shooted)
         {
-            // set to false
+            // set checking bool to false
             shooted = false;
-            // get shooting sound and prevent looping
+            // get shooting sound and prevent looping and play sound
             GetComponent<AudioSource>().clip = shootsound;
             GetComponent<AudioSource>().loop = false;
-            // play sound
             GetComponent<AudioSource>().Play();
         }
         // if player was damaged
         if (damaged)
         {
+            // set checking bool to false
             damaged = false;
+            // get damage sound and prevent looping and play sound
             GetComponent<AudioSource>().clip = damagesound;
             GetComponent<AudioSource>().loop = false;
             GetComponent<AudioSource>().Play();
         }
+        // if player has died
         if (deathed)
         {
+            // set checking bool to false
             deathed = false;
+            // get death sound and prevent looping and play sound
             GetComponent<AudioSource>().clip = deathsound;
             GetComponent<AudioSource>().loop = false;
             GetComponent<AudioSource>().Play();

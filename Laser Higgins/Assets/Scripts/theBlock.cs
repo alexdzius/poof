@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * theBlock.cs
+ * Last Edited: 5/30/20
+ * By: Alex Dzius
+ * Desc: handler for the block from the block powerup, acts as a temporary shield to the player
+ */ 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +12,6 @@ public class theBlock : MonoBehaviour
 {
     // timer to delay blocks destruction
     private float timer = 5f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

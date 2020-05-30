@@ -1,6 +1,6 @@
 ﻿/*
 ButtonPress.cs
-Last Edited: 5/20/2020
+Last Edited: 5/30/2020
 By: Alex Dzius
 Desc: Button Handler of anything that needs a response by the button
 */
@@ -10,17 +10,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ButtonPress : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     // debug option for button, responsible to test time slowdown and the removal of lives
     public void OnPress()
     {
@@ -45,6 +34,5 @@ public class ButtonPress : MonoBehaviour
     {
         // if pressed, close game
         Application.Quit();
-        print("poop");
     }
 }

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿/*
+ * ProjectileController.cs
+ * Last Edited: 5/30/20
+ * By: Marvin Chan
+ * Desc: Projectile handler, to handle its operations, destruction and operation
+ */ 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

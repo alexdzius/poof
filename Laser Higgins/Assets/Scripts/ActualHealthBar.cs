@@ -1,6 +1,6 @@
 ﻿/*
 ActualHealthBar.cs
-Last Edited: 5/20/2020
+Last Edited: 5/30/2020
 By: Alex Dzius
 Desc: Health Bar handler to allow for the health bar to be adjusted and be equivalent to thhe amount of lives present
 */

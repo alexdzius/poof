@@ -26,10 +26,4 @@ public class DeathScoreText : MonoBehaviour
         GameManager.TotalLifes = 3;
         GameManager.timeLeft = 5f;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
