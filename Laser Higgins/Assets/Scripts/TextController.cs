@@ -29,5 +29,18 @@ public class TextController : MonoBehaviour
         zm.a = 0.0f;
         texts[0].color = zm;
 #endif
+        texts[3].color = Color.red;
+    }
+    private void Update()
+    {
+        texts[2].text = GameManager.TotalScore + " Points";
+        if (WaveController.wavetimer < 6)
+        {
+            texts[3].text = ((int)WaveController.wavetimer).ToString();
+            if (WaveController.wavetimer < 0 || WaveController.wavetimer > 6)
+            {
+                texts[3].text = "";
+            }
+        }
     }
 }

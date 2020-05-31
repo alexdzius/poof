@@ -137,4 +137,5 @@ MonoBehaviour:
   speed: 5
   outOfBounds: 20
   targetPlayer: 0
-  playerPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  boundsNearPlayer: 2.5

@@ -34,6 +34,8 @@ public class EnemyController : MonoBehaviour
   private float bottom;
   private Vector3 direction;
 
+    private Animator animator;
+
   public Type name;
 
   public GameObject enemyBullet;
@@ -42,6 +44,8 @@ public class EnemyController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
+    animator = GetComponent<Animator>();
+    animator.SetBool("hit", false);
     player = GameManager.player;
     Type[] types = (Type[])System.Enum.GetValues(typeof(Type));
     name = types[(int)Random.Range(0, types.Length)];
@@ -141,7 +145,8 @@ public class EnemyController : MonoBehaviour
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
         GameManager.TotalScore++;
         controller.Destroy();
-        Destroy(gameObject);
+                animator.SetBool("hit", true);
+                StartCoroutine(ExecuteAfterTime(.5f));
       }
     }
   }
@@ -157,4 +162,10 @@ public class EnemyController : MonoBehaviour
     bullet.GetComponent<ProjectileController>().targetPlayer = target;
     bullet.GetComponent<ProjectileController>().player = player;
   }
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(gameObject);
+        // Code to execute after the delay
+    }
 }

@@ -11,8 +11,8 @@ using UnityEngine;
 public class WaveController : MonoBehaviour
 {
     // timers and wavecounters
-    public static float wavetimer = 11;
-    public static float powertimer = 33;
+    public static float wavetimer = 5;
+    public static float powertimer = 25;
     private int waves = 2;
     // public fields to assign types of powerups and enemies
     [SerializeField] public GameObject[] enemies;

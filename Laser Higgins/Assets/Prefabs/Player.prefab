@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5552619485936377398}
   - component: {fileID: 8257537979363257208}
   - component: {fileID: 6921423304372754772}
+  - component: {fileID: 3213384394188121651}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -104,7 +105,7 @@ MonoBehaviour:
   theBlock: {fileID: 8509886123711606815, guid: 235bd537663b0440299f00359c8d50c4,
     type: 3}
   joystick: {fileID: 0}
-  gameobject: {fileID: 0}
+  joystickGO: {fileID: 0}
   timer: 5
 --- !u!50 &5552619485936377398
 Rigidbody2D:
@@ -166,3 +167,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainCamera: {fileID: 0}
+--- !u!95 &3213384394188121651
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967816887434772103}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 927eb240406ff0b4390c0a954ada297c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

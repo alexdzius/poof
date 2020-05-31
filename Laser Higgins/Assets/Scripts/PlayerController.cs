@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
   public GameObject theBlock;
   public Joystick joystick;
   public GameObject joystickGO;
+  // animation control
+  private Animator animator;
   // timer and vector3 direction, to allow for certain things to operate
   public float timer = 5;
   Vector3 currentDirection;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
   {
     // set the time to the timescaleadjuster, which at start is 1
     Time.timeScale = GameManager.timeScaleAdjuster;
+        // get animator
+        animator = GetComponent<Animator>();
     // if the project is running not on ios
 #if !UNITY_IOS
     // disable the joystick object
@@ -62,7 +66,7 @@ public class PlayerController : MonoBehaviour
         Fire();
       }
     }
-    // if program is running on ios
+        // if program is running on ios
 #if UNITY_IOS
         if(Input.touchCount > 0)
         {
@@ -119,7 +123,10 @@ public class PlayerController : MonoBehaviour
         GameManager.TotalLifes--;
         SoundEffectHandler.damaged = true;
         controller.Destroy();
-      }
+        animator.SetBool("phit", true);
+        StartCoroutine(ExecuteAfterTime(1));
+
+            }
     }
     // if you have hit the health powerup
     if (collision.gameObject.tag == "HealthPUP")
@@ -174,7 +181,9 @@ public class PlayerController : MonoBehaviour
       GameManager.TotalLifes--;
       SoundEffectHandler.damaged = true;
       WaveController.wavetimer -= 5f;
-    }
+            animator.SetBool("phit", true);
+            StartCoroutine(ExecuteAfterTime(1));
+        }
     if (collision.gameObject.tag == "Enemy")
     {
       // delete enemy
@@ -182,7 +191,9 @@ public class PlayerController : MonoBehaviour
       // remove life
       GameManager.TotalLifes--;
       SoundEffectHandler.damaged = true;
-    }
+            animator.SetBool("phit", true);
+            StartCoroutine(ExecuteAfterTime(1));
+        }
     if (collision.gameObject.tag == "FreeTime")
     {
       // delete the collided object, and add free time
@@ -204,4 +215,9 @@ public class PlayerController : MonoBehaviour
   {
     return currentDirection;
   }
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        animator.SetBool("phit", false);
+    }
 }
