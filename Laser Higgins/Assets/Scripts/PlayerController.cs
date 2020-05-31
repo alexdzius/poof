@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("phit", true);
         StartCoroutine(ExecuteAfterTime(1));
 
-            }
+      }
     }
     // if you have hit the health powerup
     if (collision.gameObject.tag == "HealthPUP")

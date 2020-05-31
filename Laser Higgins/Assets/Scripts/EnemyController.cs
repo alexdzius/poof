@@ -146,6 +146,7 @@ public class EnemyController : MonoBehaviour
         GameManager.TotalScore++;
         controller.Destroy();
                 animator.SetBool("hit", true);
+                GetComponent<Collider2D>().enabled = false;
                 StartCoroutine(ExecuteAfterTime(.5f));
       }
     }

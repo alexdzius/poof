@@ -1490,8 +1490,8 @@ RectTransform:
   - {fileID: 607362522}
   - {fileID: 473845768}
   - {fileID: 1111623525}
-  - {fileID: 1757784724}
   - {fileID: 1656912576}
+  - {fileID: 1757784724}
   - {fileID: 348555416}
   - {fileID: 1600281617}
   - {fileID: 1910813655}
@@ -2171,7 +2171,7 @@ Transform:
   m_LocalScale: {x: 7.5, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 1317974218}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1671165958
 GameObject:
