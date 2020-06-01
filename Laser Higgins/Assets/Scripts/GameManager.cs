@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     // highscore and life collecting variables
     public static int TotalScore = 0;
     public static int TotalLifes = 3;
+    public static int HighScore = 0;
     // bools to supervise whether new wave of enemies or a powerup spawn is needed
     public static bool newWaveNeeded = false;
     public static bool newPupNeeded = false;
@@ -103,13 +104,6 @@ public class GameManager : MonoBehaviour
             // set the wave needed to false
             newWaveNeeded = false;
             // possibly adjust based on what type of wave is required.
-        }
-        // if the player has lost all thheir lives
-        if (TotalLifes <= 0)
-        {
-            SoundEffectHandler.deathed = true;
-            // load the death screen
-            SceneManager.LoadScene("DeathScreen");
         }
     }
 }

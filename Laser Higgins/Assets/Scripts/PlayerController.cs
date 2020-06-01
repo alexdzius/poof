@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.iOS;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
   public float speed = 5f;
@@ -110,7 +111,17 @@ public class PlayerController : MonoBehaviour
             }
         }
 #endif
-  }
+        // if the player has lost all thheir lives
+        if (GameManager.TotalLifes <= 0 && GetComponent<Collider2D>().enabled == true)
+        {
+            SoundEffectHandler.deathed = true;
+            // load the death screen
+            GetComponent<Collider2D>().enabled = false;
+            animator.SetBool("phit", false);
+            animator.SetBool("dead", true);
+            StartCoroutine(ExecuteAfterTime2(.5f));
+        }
+    }
 
   void OnCollisionEnter2D(Collision2D collision)
   {
@@ -219,5 +230,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         animator.SetBool("phit", false);
+    }
+    IEnumerator ExecuteAfterTime2(float time)
+    {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene("DeathScreen");
     }
 }
