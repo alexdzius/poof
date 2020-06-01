@@ -26,7 +26,7 @@ public class DeathScoreText : MonoBehaviour
         // set the time survived from timesinceload, which represents the time since the loading of the game scene, which is set here
         endscore[1].text = "Total Time: " + (int)GameManager.timesinceload + " seconds";
         // highscore
-        endscore[2].text = "Total Highscore: " + GameManager.HighScore;
+        endscore[2].text = "Highscore: " + GameManager.HighScore;
         // reset all values to allow for a good rreset of values
         GameManager.TotalScore = 0;
         GameManager.TotalLifes = 3;
