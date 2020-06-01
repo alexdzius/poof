@@ -36,7 +36,7 @@ public class ProjectileController : MonoBehaviour
     {
       direction = (Vector3.MoveTowards(transform.position, player.transform.position, 1) - transform.position).normalized;
     }
-    // 1/5 chance of shooting a leading projectile
+    // 1/3 chance of shooting a leading projectile
     if (type == Type.Enemy && Random.value < 0.33f)
     {
       // projectile leading that doesn't work because player is too speedy
@@ -49,7 +49,7 @@ public class ProjectileController : MonoBehaviour
             print(playerPos);
             direction = (Vector3.MoveTowards(currentPos, playerPos, speed * Time.deltaTime) - transform.position).normalized;
             targetPlayer = true; */
-      // target random position within 2 units of the player
+      // direction vector aimed at random position within 2 units of the player
       direction = (Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(Random.Range(-boundsNearPlayer, boundsNearPlayer), Random.Range(-boundsNearPlayer, boundsNearPlayer), 0), 1) - transform.position).normalized;
       targetPlayer = true;
     }
@@ -58,16 +58,20 @@ public class ProjectileController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    // if player projectile then move upwards
     if (type == Type.Player)
     {
       transform.position += (Vector3)new Vector2(0, speed * Time.deltaTime);
     }
+    // if enemy projectile
     else if (type == Type.Enemy)
     {
+      // move downwards if not targeting
       if (!targetPlayer)
       {
         transform.position += (Vector3)new Vector2(0, -speed * Time.deltaTime);
       }
+      // otherwise use direction vector to move
       else
       {
         transform.position += direction * speed * Time.deltaTime;
