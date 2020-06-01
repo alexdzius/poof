@@ -39,7 +39,7 @@ public class WaveController : MonoBehaviour
             // spawn additional enemies based on wave, starting from 3 enemies
             for (int i = 0; i < waves; i++)
             {
-                Instantiate(enemies[Random.Range(0, enemies.Length - 1)], new Vector3((float)Random.Range(-3, 3), 8f), Quaternion.identity);  
+                Instantiate(enemies[1], new Vector3((float)Random.Range(-3, 3), 8f), Quaternion.identity);  
             }
         }
         // decrease timer as deltatime passes
