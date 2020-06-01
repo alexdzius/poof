@@ -145,9 +145,10 @@ public class EnemyController : MonoBehaviour
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
         GameManager.TotalScore++;
         controller.Destroy();
-                animator.SetBool("hit", true);
-                GetComponent<Collider2D>().enabled = false;
-                StartCoroutine(ExecuteAfterTime(.5f));
+        EnemySoundEffectHandler.edamaged = true;
+        animator.SetBool("hit", true);
+        GetComponent<Collider2D>().enabled = false;
+        StartCoroutine(ExecuteAfterTime(.5f));
       }
     }
   }
@@ -162,6 +163,7 @@ public class EnemyController : MonoBehaviour
     // target player if set
     bullet.GetComponent<ProjectileController>().targetPlayer = target;
     bullet.GetComponent<ProjectileController>().player = player;
+    EnemySoundEffectHandler.eshooted = true;
   }
     IEnumerator ExecuteAfterTime(float time)
     {

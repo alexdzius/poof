@@ -14,10 +14,12 @@ public class SoundEffectHandler : MonoBehaviour
     public AudioClip shootsound;
     public AudioClip damagesound;
     public AudioClip deathsound;
+    
     // static bools that control when each sound effect is intended to play
     public static bool shooted = false;
     public static bool damaged = false;
     public static bool deathed = false;
+    
 
     // Update is called once per frame
     void Update()
