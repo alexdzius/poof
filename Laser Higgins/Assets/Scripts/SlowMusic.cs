@@ -16,7 +16,7 @@ public class SlowMusic : MonoBehaviour
     {
         if(GameManager.TheTimer)
         {
-            this.GetComponent<AudioSource>().pitch = (1.0f / 6.0f);
+            this.GetComponent<AudioSource>().pitch = (1.0f / 2.0f);
         }
         else
         {

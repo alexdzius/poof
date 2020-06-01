@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 256780607}
   - component: {fileID: 256780606}
   - component: {fileID: 256780605}
+  - component: {fileID: 256780608}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -464,6 +465,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256780608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256780604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69febbd0c339c4340b4ed70fab16098b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &348555414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,6 +1546,7 @@ GameObject:
   - component: {fileID: 1413961973}
   - component: {fileID: 1413961977}
   - component: {fileID: 1413961976}
+  - component: {fileID: 1413961978}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1691,6 +1705,18 @@ MonoBehaviour:
   shootsound: {fileID: 8300000, guid: 42b9edefb7e03af45ad9a4ffc9a1ba01, type: 3}
   damagesound: {fileID: 8300000, guid: 053a7f983726f1a43b0284924516cda8, type: 3}
   deathsound: {fileID: 8300000, guid: c10a62f28cded2549815690453575ab9, type: 3}
+--- !u!114 &1413961978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413961972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69febbd0c339c4340b4ed70fab16098b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1433941302
 GameObject:
   m_ObjectHideFlags: 0
