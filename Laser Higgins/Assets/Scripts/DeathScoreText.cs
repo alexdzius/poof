@@ -15,18 +15,26 @@ public class DeathScoreText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameManager.TotalScore >= GameManager.HighScore)
-        {
-            GameManager.HighScore = GameManager.TotalScore;
-        }
         // get text objects coming from childerns in canvas and set them to array
         endscore = GetComponentsInChildren<Text>();
-        // set highscore based on total score achieved by all players so far
-        endscore[0].text = "Final Score: " + GameManager.TotalScore;
-        // set the time survived from timesinceload, which represents the time since the loading of the game scene, which is set here
-        endscore[1].text = "Total Time: " + (int)GameManager.timesinceload + " seconds";
-        // highscore
-        endscore[2].text = "Highscore: " + GameManager.HighScore;
+        endscore[0].color = Color.white;
+        if(GameManager.TotalScore >= GameManager.CurrentHighScore)
+        {
+            endscore[0].text = "FIRST! with " + GameManager.TotalScore + " Points!";
+            endscore[0].color = Color.green;
+            endscore[1].text = "Old Highscore: " + GameManager.CurrentHighScore + " Points.";
+            GameManager.CurrentHighScore = GameManager.TotalScore;
+        }
+        else
+        {
+            endscore[0].text = "TRY AGAIN! Current HS: " + GameManager.CurrentHighScore + " Points.";
+            endscore[1].text = "Your score this time was: " + GameManager.TotalScore + " Points.";
+        }
+        endscore[2].text = "Total Time Alive: " + (int)GameManager.timesinceload + " seconds";
+
+
+
+
         // reset all values to allow for a good rreset of values
         GameManager.TotalScore = 0;
         GameManager.TotalLifes = 3;

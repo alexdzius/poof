@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public static int TotalScore = 0;
     public static int TotalLifes = 3;
     public static int HighScore = 0;
+    public static int CurrentHighScore;
     // bools to supervise whether new wave of enemies or a powerup spawn is needed
     public static bool newWaveNeeded = false;
     public static bool newPupNeeded = false;
@@ -31,6 +32,12 @@ public class GameManager : MonoBehaviour
     public static GameObject player;
     // variable to hold the health bar and operate the script necessary for it
     [SerializeField] private ActualHealthBar AccHealth;
+    private void Awake()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetString("highscoreTable", "");
+        PlayerPrefs.Save();
+    }
     // Start is called before the first frame update
     void Start()
     {
