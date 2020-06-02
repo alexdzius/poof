@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
     public static float timesinceload;
     // extrra float and bool fo future refence if needed to not slowdown certain objeccts -- currently not used
     public static float normalTime;
-    private bool normaltimecheck = true;
     public static GameObject player;
     // variable to hold the health bar and operate the script necessary for it
     [SerializeField] private ActualHealthBar AccHealth;
