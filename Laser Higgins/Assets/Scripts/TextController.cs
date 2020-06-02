@@ -33,10 +33,14 @@ public class TextController : MonoBehaviour
     }
     private void Update()
     {
+        // update current score text as game progresses
         texts[2].text = GameManager.TotalScore + " Points";
+        // if wavetimer is less than 6, start the red countdown
         if (WaveController.wavetimer < 6)
         {
+            // set the text to the current counter
             texts[3].text = ((int)WaveController.wavetimer).ToString();
+            // if the counter resets or is past 0, hide it
             if (WaveController.wavetimer < 0 || WaveController.wavetimer > 6)
             {
                 texts[3].text = "";

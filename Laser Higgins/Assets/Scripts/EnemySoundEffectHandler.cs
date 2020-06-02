@@ -1,19 +1,20 @@
-﻿using System.Collections;
+﻿/*
+ * EnemySoundEffectHandler.cs
+ * By: Alex Dzius
+ * Last Edited: 6/2/30
+ * Desc: Script to handle the audiosources of the enemy, to prevent conflicts with the normal sound effect handler
+ */ 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySoundEffectHandler : MonoBehaviour
 {
+    // set objects and static variables to access sound playing and the sound to be played as needed
     public AudioClip eshootsound;
     public AudioClip edamagesound;
     public static bool edamaged = false;
     public static bool eshooted = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {

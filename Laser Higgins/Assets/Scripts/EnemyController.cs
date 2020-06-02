@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
   public float fireRate = 0.7f;
   private float timeSinceLastFire = 0f;
 
-
+  // control variables for enemies behavior and operations
   float timeSinceTurn;
   float timeToNextTurn;
   private bool positive = true;
@@ -34,12 +34,12 @@ public class EnemyController : MonoBehaviour
   private float bottom;
   private Vector3 direction;
 
-    private Animator animator;
+  private Animator animator;
 
   public Type name;
 
   public GameObject enemyBullet;
-
+  // player object for targetting purposes
   [SerializeField] public GameObject player;
   // Start is called before the first frame update
   void Start()
@@ -145,6 +145,7 @@ public class EnemyController : MonoBehaviour
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
         GameManager.TotalScore++;
         controller.Destroy();
+        // fire death animation, sound and disable functionality
         EnemySoundEffectHandler.edamaged = true;
         animator.SetBool("hit", true);
         GetComponent<Collider2D>().enabled = false;
@@ -167,8 +168,8 @@ public class EnemyController : MonoBehaviour
   }
     IEnumerator ExecuteAfterTime(float time)
     {
+        // wait for given amount of seconds before destroying the option
         yield return new WaitForSeconds(time);
         Destroy(gameObject);
-        // Code to execute after the delay
     }
 }

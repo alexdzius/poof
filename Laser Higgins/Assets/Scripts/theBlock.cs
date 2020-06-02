@@ -31,10 +31,9 @@ public class theBlock : MonoBehaviour
         // if its not the player
         if(collision.gameObject.tag != "Player")
         {
-            // if it hits an enemy
+            // if it hits an enemy add score
             if (collision.gameObject.tag == "Enemy")
             {
-                // add 1 to score
                 GameManager.TotalScore++;
             }
             // destroy collided object regardless

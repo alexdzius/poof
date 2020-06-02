@@ -227,18 +227,21 @@ public class PlayerController : MonoBehaviour
     bullet.transform.position = transform.position;
     SoundEffectHandler.shooted = true;
   }
-
+  // get current direction
   public Vector3 getCurrentDirection()
   {
     return currentDirection;
   }
+  
   IEnumerator ExecuteAfterTime(float time)
   {
+    // delay disablement of the damage animation for the player for duration of the animation
     yield return new WaitForSeconds(time);
     animator.SetBool("phit", false);
   }
   IEnumerator ExecuteAfterTime2(float time)
   {
+    // delay loading the deathscreen till animation is finished
     yield return new WaitForSeconds(time);
     SceneManager.LoadScene("DeathScreen");
   }
