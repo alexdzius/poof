@@ -3,7 +3,7 @@
  * Last Edited: 5/30/20
  * By: Marvin Chan
  * Desc: Projectile handler, to handle its operations, destruction and operation
- */ 
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +18,7 @@ public class ProjectileController : MonoBehaviour
 
   public Type type;
   public float speed = 7f;
-  public float outOfBounds = 20f;
+  private float outOfBounds = 20f;
   public bool targetPlayer = false;
   public GameObject player;
   private Vector3 direction;

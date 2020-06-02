@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  fireRate: 4
+  fireRate: 3
   playerBullet: {fileID: 3563073183249274802, guid: 3b89c44455d191743a68718ad063daac,
     type: 3}
   theBlock: {fileID: 8509886123711606815, guid: 235bd537663b0440299f00359c8d50c4,
