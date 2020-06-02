@@ -32,12 +32,6 @@ public class GameManager : MonoBehaviour
     public static GameObject player;
     // variable to hold the health bar and operate the script necessary for it
     [SerializeField] private ActualHealthBar AccHealth;
-    private void Awake()
-    {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.SetString("highscoreTable", "");
-        PlayerPrefs.Save();
-    }
     // Start is called before the first frame update
     void Start()
     {

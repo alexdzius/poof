@@ -12,6 +12,8 @@ public class DeathScoreText : MonoBehaviour
 {
     // text array for better handling of text objects
     public Text[] endscore;
+    public AudioClip goodmusic;
+    public AudioClip badmusic;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +26,19 @@ public class DeathScoreText : MonoBehaviour
             endscore[0].color = Color.green;
             endscore[1].text = "Old Highscore: " + GameManager.CurrentHighScore + " Points.";
             GameManager.CurrentHighScore = GameManager.TotalScore;
+            GetComponent<AudioSource>().clip = goodmusic;
+            GetComponent<AudioSource>().loop = true;
+            GetComponent<AudioSource>().Play();
+            print("h");
         }
         else
         {
             endscore[0].text = "TRY AGAIN! Current HS: " + GameManager.CurrentHighScore + " Points.";
             endscore[1].text = "Your score this time was: " + GameManager.TotalScore + " Points.";
+            GetComponent<AudioSource>().clip = badmusic;
+            GetComponent<AudioSource>().loop = true;
+            GetComponent<AudioSource>().Play();
+            print("h2");
         }
         endscore[2].text = "Total Time Alive: " + (int)GameManager.timesinceload + " seconds";
 
