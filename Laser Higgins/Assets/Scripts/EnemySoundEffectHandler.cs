@@ -27,17 +27,16 @@ public class EnemySoundEffectHandler : MonoBehaviour
             GetComponent<AudioSource>().clip = eshootsound;
             GetComponent<AudioSource>().loop = false;
             GetComponent<AudioSource>().Play();
-
-            // if enemy was damaged
-            if (edamaged)
-            {
-                // set checking bool to false
-                edamaged = false;
-                // get damage sound and prevent looping and play sound
-                GetComponent<AudioSource>().clip = edamagesound;
-                GetComponent<AudioSource>().loop = false;
-                GetComponent<AudioSource>().Play();
-            }
+        }
+        // if enemy was damaged
+        if (edamaged)
+        {
+            // set checking bool to false
+            edamaged = false;
+            // get damage sound and prevent looping and play sound
+            GetComponent<AudioSource>().clip = edamagesound;
+            GetComponent<AudioSource>().loop = false;
+            GetComponent<AudioSource>().Play();
         }
     }
 }
