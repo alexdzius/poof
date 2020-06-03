@@ -118,9 +118,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.0367984}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 0.13998795
 --- !u!114 &5545371182739782082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   speed: 5
-  outOfBounds: 20
   targetPlayer: 0
-  playerPos: {x: 0, y: 0, z: 0}
+  player: {fileID: 0}
+  boundsNearPlayer: 2.5
