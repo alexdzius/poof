@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 94417009}
   - component: {fileID: 94417008}
   m_Layer: 0
-  m_Name: Starfield (2)
+  m_Name: UpperStarfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 256780605}
   - component: {fileID: 256780608}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MusicHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,7 +464,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 91b791d618722d24ba6be653b5bc631e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: be0192e55522884418dc4588243cecf5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.142
   m_Pitch: 1
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787bb66d33648bd448d48685d1daafdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loop: {fileID: 8300000, guid: 289b15c3264e0b8438ddf2126bb96f5a, type: 3}
+  loop: {fileID: 8300000, guid: d9abc498cbc67564681441f79932604a, type: 3}
 --- !u!4 &256780607
 Transform:
   m_ObjectHideFlags: 0
@@ -1102,7 +1102,7 @@ GameObject:
   - component: {fileID: 741976632}
   - component: {fileID: 741976631}
   m_Layer: 0
-  m_Name: Starfield (1)
+  m_Name: CenterStarfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,7 +1372,7 @@ GameObject:
   - component: {fileID: 1130335880}
   - component: {fileID: 1130335884}
   m_Layer: 0
-  m_Name: Starfield
+  m_Name: LowerStarfield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

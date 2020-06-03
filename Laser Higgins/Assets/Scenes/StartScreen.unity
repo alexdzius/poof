@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 562822112}
   - component: {fileID: 562822111}
   m_Layer: 0
-  m_Name: StartText
+  m_Name: LowerTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 828664590}
   - component: {fileID: 828664589}
   m_Layer: 0
-  m_Name: StartText2
+  m_Name: UpperTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 1579326434}
   - component: {fileID: 1579326433}
   m_Layer: 0
-  m_Name: Starfield
+  m_Name: StarBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

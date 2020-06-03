@@ -19,8 +19,10 @@ public class DeathScoreText : MonoBehaviour
     {
         // get text objects coming from childerns in canvas and set them to array
         endscore = GetComponentsInChildren<Text>();
-        endscore[0].color = Color.white;
-        if(GameManager.TotalScore >= GameManager.CurrentHighScore)
+        endscore[0].color = Color.black;
+        endscore[1].color = Color.black;
+        endscore[2].color = Color.black;
+        if (GameManager.TotalScore >= GameManager.CurrentHighScore)
         {
             endscore[0].text = "FIRST! with " + GameManager.TotalScore + " Points!";
             endscore[0].color = Color.green;
@@ -29,21 +31,16 @@ public class DeathScoreText : MonoBehaviour
             GetComponent<AudioSource>().clip = goodmusic;
             GetComponent<AudioSource>().loop = true;
             GetComponent<AudioSource>().Play();
-            print("h");
         }
         else
         {
-            endscore[0].text = "TRY AGAIN! Current HS: " + GameManager.CurrentHighScore + " Points.";
-            endscore[1].text = "Your score this time was: " + GameManager.TotalScore + " Points.";
+            endscore[0].text = "TRY AGAIN! HS: " + GameManager.CurrentHighScore + " Points.";
+            endscore[1].text = "Your score: " + GameManager.TotalScore + " Points.";
             GetComponent<AudioSource>().clip = badmusic;
             GetComponent<AudioSource>().loop = true;
             GetComponent<AudioSource>().Play();
-            print("h2");
         }
-        endscore[2].text = "Total Time Alive: " + (int)GameManager.timesinceload + " seconds";
-
-
-
+        endscore[2].text = "Survived Time: " + (int)GameManager.timesinceload + " seconds";
 
         // reset all values to allow for a good rreset of values
         GameManager.TotalScore = 0;
