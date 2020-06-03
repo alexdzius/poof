@@ -144,9 +144,9 @@ public class EnemyController : MonoBehaviour
       {
         // if it hits an enemy projectile, then decrease lives and then destroy the bullet
         GameManager.TotalScore++;
+        EnemySoundEffectHandler.edamaged = true; 
         controller.Destroy();
         // fire death animation, sound and disable functionality
-        EnemySoundEffectHandler.edamaged = true;
         animator.SetBool("hit", true);
         GetComponent<Collider2D>().enabled = false;
         StartCoroutine(ExecuteAfterTime(.5f));
@@ -157,6 +157,7 @@ public class EnemyController : MonoBehaviour
   // set parameter true to send a homing missile
   void Fire(bool target = false)
   {
+    EnemySoundEffectHandler.eshooted = true; 
     GameObject bullet = Instantiate(enemyBullet);
     bullet.GetComponent<ProjectileController>().type = ProjectileController.Type.Enemy;
     // teleport bullet to player
@@ -164,7 +165,6 @@ public class EnemyController : MonoBehaviour
     // target player if set
     bullet.GetComponent<ProjectileController>().targetPlayer = target;
     bullet.GetComponent<ProjectileController>().player = player;
-    EnemySoundEffectHandler.eshooted = true;
   }
     IEnumerator ExecuteAfterTime(float time)
     {
