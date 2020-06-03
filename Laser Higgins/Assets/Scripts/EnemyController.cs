@@ -152,6 +152,10 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(ExecuteAfterTime(.5f));
       }
     }
+    if(collision.gameObject.tag == "BlockPUP" || collision.gameObject.tag == "BlockPUP" || collision.gameObject.tag == "DeathPUP" || collision.gameObject.tag == "FirePUP" || collision.gameObject.tag == "HealthPUP" || collision.gameObject.tag == "TimePUP")
+        {
+            Destroy(collision.gameObject);
+        }
   }
 
   // set parameter true to send a homing missile

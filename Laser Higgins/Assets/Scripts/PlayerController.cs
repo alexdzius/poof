@@ -7,7 +7,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_IOS
 using UnityEngine.iOS;
+#endif
 using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
@@ -210,12 +212,6 @@ public class PlayerController : MonoBehaviour
       SoundEffectHandler.damaged = true;
       animator.SetBool("phit", true);
       StartCoroutine(ExecuteAfterTime(1));
-    }
-    if (collision.gameObject.tag == "FreeTime")
-    {
-      // delete the collided object, and add free time
-      Destroy(collision.gameObject);
-      GameManager.timeLeft = 5f;
     }
   }
   // fire a plasma something

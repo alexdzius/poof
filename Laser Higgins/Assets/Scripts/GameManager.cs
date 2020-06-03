@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         // if it was found
         else
         {
-            // set its size based on total lifs amount ikn a serialized way
+            // set its size based on total lifs amount in a serialized way
             AccHealth.SetSize((float)TotalLifes / 3);
         }
         // set the time since load variable to the actual amount of time since load, to constantly calculate the amount of seconds that have passed since begin.
