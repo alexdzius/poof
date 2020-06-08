@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     // highscore and life collecting variables
     public static int TotalScore = 0;
     public static int TotalLifes = 3;
+    public static int HighScore = 0;
+    public static int CurrentHighScore;
     // bools to supervise whether new wave of enemies or a powerup spawn is needed
     public static bool newWaveNeeded = false;
     public static bool newPupNeeded = false;
@@ -26,12 +28,14 @@ public class GameManager : MonoBehaviour
     public static float timesinceload;
     // extrra float and bool fo future refence if needed to not slowdown certain objeccts -- currently not used
     public static float normalTime;
-    private bool normaltimecheck = true;
+    public static GameObject player;
     // variable to hold the health bar and operate the script necessary for it
     [SerializeField] private ActualHealthBar AccHealth;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
+        print(player);
         // find all objects of type gamemanager, to allow it to persist throughout changing scenes
         GameManager[] anObject = FindObjectsOfType<GameManager>();
         // if there is only one game manager
@@ -59,36 +63,39 @@ public class GameManager : MonoBehaviour
         // if it was found
         else
         {
-            // set its size based on total lifs amount ikn a serialized way
+            // set its size based on total lifs amount in a serialized way
             AccHealth.SetSize((float)TotalLifes / 3);
         }
         // set the time since load variable to the actual amount of time since load, to constantly calculate the amount of seconds that have passed since begin.
         timesinceload = Time.timeSinceLevelLoad;
 
-        // if the slowdown button is held down, and there is slowdown time leftover
-        if (Input.GetKey("e") && timeLeft >= 0)
+        // overall check if object is IOS or Desktop - these controls for desktop
+        #if !UNITY_IOS
+                // if the slowdown button is held down, and there is slowdown time leftover
+                if (Input.GetKey("e") && timeLeft >= 0)
+                {
+                    // set the timeslowneeded to true to start the decrementation process of time amount
+                    TimeSlowNeeded = true;
+                    // slow down the level's sped
+                    timeScaleAdjuster = 0.25f;
+                    // set the fact that the timer is occuring as true
+                    TheTimer = true;
+                }
+                // if the button is not pressed anymore or time runs out
+                else
+                {
+                    // set the bools to be confirmed that the timer is ove
+                    TimeSlowNeeded = false;
+                    TheTimer = false;
+                    // set the time of the level back to ususal levels.
+                    timeScaleAdjuster = 1f;
+                }
+        #endif
+        // if esc is pressed then close game
+        if (Input.GetKey("escape"))
         {
-            // set the timeslowneeded to true to start the decrementation process of time amount
-            TimeSlowNeeded = true;
-            // slow down the level's sped
-            timeScaleAdjuster = 0.25f;
-            // set the fact that the timer is occuring as true
-            TheTimer = true;
-        }
-        // if the button is not pressed anymore or time runs out
-        else
-        {
-            // set the bools to be confirmed that the timer is ove
-            TimeSlowNeeded = false;
-            TheTimer = false;
-            // set the time of the level back to ususal levels.
-            timeScaleAdjuster = 1f;
-        }
-        // CURRENTLY UNUSED: check for normaltime, to ensure that certain objects retain normal speed.
-        if (normaltimecheck)
-        {
-            normaltimecheck = false;
-            normalTime = Time.deltaTime;
+            Application.Quit();
+            print("poop");
         }
         // if a new wave is required, based on timer or other events
         if (newWaveNeeded)
@@ -96,12 +103,6 @@ public class GameManager : MonoBehaviour
             // set the wave needed to false
             newWaveNeeded = false;
             // possibly adjust based on what type of wave is required.
-        }
-        // if the player has lost all thheir lives
-        if (TotalLifes == 0)
-        {
-            // load the death screen
-            SceneManager.LoadScene("DeathScreen");
         }
     }
 }

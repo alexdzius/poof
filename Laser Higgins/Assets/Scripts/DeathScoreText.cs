@@ -12,24 +12,39 @@ public class DeathScoreText : MonoBehaviour
 {
     // text array for better handling of text objects
     public Text[] endscore;
+    public AudioClip goodmusic;
+    public AudioClip badmusic;
     // Start is called before the first frame update
     void Start()
     {
         // get text objects coming from childerns in canvas and set them to array
         endscore = GetComponentsInChildren<Text>();
-        // set highscore based on total score achieved by all players so far
-        endscore[0].text = "Final Score: " + GameManager.TotalScore;
-        // set the time survived from timesinceload, which represents the time since the loading of the game scene, which is set here
-        endscore[1].text = "Total Time: " + (int)GameManager.timesinceload + " seconds";
+        endscore[0].color = Color.black;
+        endscore[1].color = Color.black;
+        endscore[2].color = Color.black;
+        if (GameManager.TotalScore >= GameManager.CurrentHighScore)
+        {
+            endscore[0].text = "FIRST! with " + GameManager.TotalScore + " Points!";
+            endscore[0].color = Color.green;
+            endscore[1].text = "Old Highscore: " + GameManager.CurrentHighScore + " Points.";
+            GameManager.CurrentHighScore = GameManager.TotalScore;
+            GetComponent<AudioSource>().clip = goodmusic;
+            GetComponent<AudioSource>().loop = true;
+            GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            endscore[0].text = "TRY AGAIN! HS: " + GameManager.CurrentHighScore + " Points.";
+            endscore[1].text = "Your score: " + GameManager.TotalScore + " Points.";
+            GetComponent<AudioSource>().clip = badmusic;
+            GetComponent<AudioSource>().loop = true;
+            GetComponent<AudioSource>().Play();
+        }
+        endscore[2].text = "Survived Time: " + (int)GameManager.timesinceload + " seconds";
+
         // reset all values to allow for a good rreset of values
         GameManager.TotalScore = 0;
         GameManager.TotalLifes = 3;
         GameManager.timeLeft = 5f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
